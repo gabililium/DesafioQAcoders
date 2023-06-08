@@ -1,0 +1,7 @@
+default: -p pretty --publish-quiet -p html -p homolog
+
+pretty: --format pretty
+html: --format html --out=reports/report.html
+
+homolog: URL=https://qacoders.com.br
+prod:    URL=https://qacoders.com.br
