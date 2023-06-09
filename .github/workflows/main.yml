@@ -1,0 +1,31 @@
+name: Ruby
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1 Checkout code
+        uses: actions/checkout@v3  #Obtém os arquivos do repositório
+      - name: Step 2 Set up Ruby  #Realiza a instalação do Ruby 
+        uses: ruby/setup-ruby@v1  
+        with:
+          ruby-version: '3.1'
+      - name: Step 3 Install dependencies
+        run: bundle install
+      - name: Step 4 Run tests # Executa os Testes em modo headless
+        run: cucumber   
+      - name: Step 5 Archive production artifacts # permite fazer o download do arquivo relatorio.
+        uses: actions/upload-artifact@v3
+        #condicional que realiza o step abaixo independente do resultado dos testes(mesmo se for negativo).
+        if: ${{ always() }}
+        with: 
+            name: reports
+            path: ./reports/report.html
