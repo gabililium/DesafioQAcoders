@@ -15,8 +15,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3 # Obtém os arquivos do repositório
-    - uses: ruby/setup-ruby@v1  
     - name: Step 1 Set up Ruby # Realiza a instalação do Ruby 
+    - uses: ruby/setup-ruby@v1  
       with:
         ruby-version: '3.1'
     - name: Step 2 Install dependencies
