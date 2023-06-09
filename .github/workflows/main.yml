@@ -1,12 +1,10 @@
 name: Automatizando
 
 on:
-  # Aciona o fluxo de trabalho em eventos de solicitação push ou pull, mas apenas para a "main" branch
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 
 jobs:
   test:
@@ -14,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3 # Obtém os arquivos do repositório
-      - name: Step 1 Set up Ruby # Realiza a instalação do Ruby 
+      - uses: actions/checkout@v3  #Obtém os arquivos do repositório
+      - name: Step 1 Set up Ruby  #Realiza a instalação do Ruby 
         uses: ruby/setup-ruby@v1  
         with:
           ruby-version: '3.1'
